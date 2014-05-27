@@ -1,5 +1,5 @@
-# jumper-cookbook
-
+jumper-cookbook
+===============
 Configure the host as a gateway (jump) machine for remote access.
 
 ## Supported Platforms
