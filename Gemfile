@@ -1,19 +1,17 @@
 source 'https://rubygems.org'
 
 gem 'berkshelf'
+gem 'rake'
 
-# Uncomment these lines if you want to live on the Edge:
-#
-# group :development do
-#   gem "berkshelf", github: "berkshelf/berkshelf"
-#   gem "vagrant", github: "mitchellh/vagrant", tag: "v1.5.2"
-# end
-#
-# group :plugins do
-#   gem "vagrant-berkshelf", github: "berkshelf/vagrant-berkshelf"
-#   gem "vagrant-omnibus", github: "schisamo/vagrant-omnibus"
-# end
+group :lint do
+  gem 'coveralls', require: false
+  gem 'foodcritic'
+  gem 'rubocop'
+end
 
-gem 'thor-foodcritic'
-gem 'test-kitchen'
-gem 'kitchen-vagrant'
+group :test, :development do
+  gem 'chefspec'
+  gem 'kitchen-vagrant'
+  gem 'serverspec'
+  gem 'test-kitchen'
+end
