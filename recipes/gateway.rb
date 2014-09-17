@@ -7,5 +7,6 @@
 #
 node.default['openssh']['client']['forward_agent'] = 'yes'
 node.default['openssh']['server']['permit_root_login'] = 'no'
+
 include_recipe 'openssh::default'
 include_recipe 'openssh::server'

@@ -16,3 +16,6 @@ suites:
   - name: default
     run_list: recipe[jumper]
     attributes:
+  - name: gateway
+    run_list: recipe[jumper::gateway]
+    attributes:
