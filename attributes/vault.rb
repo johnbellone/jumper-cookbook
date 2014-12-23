@@ -1,9 +1,9 @@
 #
 # Author:: John Bellone (<jbellone@bloomberg.net>)
 # Cookbook Name:: jumper
-# Attribute:: default
+# Attribute:: vault
 #
 # Copyright (C) 2014 Bloomberg Finance L.P.
 #
 
-default['jumper']['home_path'] = '/var/lib/jumper'
+default['vault']['bag_name'] = 'secrets'

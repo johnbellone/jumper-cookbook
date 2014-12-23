@@ -9,25 +9,6 @@ Configure the host as a gateway (jump) machine for remote access.
 - [Ubuntu 12.04][5]
 - [Ubuntu 14.04][6]
 
-## Attributes
-
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['jumper']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
-
-## Usage
-
 ### jumper::default
 
 Include `jumper` in your node's `run_list`:

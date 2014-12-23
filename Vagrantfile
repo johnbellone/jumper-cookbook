@@ -6,7 +6,7 @@ Vagrant.configure('2') do |config|
 
   config.vm.define :ldap do |guest|
     guest.vm.network :private_network, ip: '172.16.44.2'
-    guest.vm.provision :chef_solo do |chef|
+    guest.vm.provision :chef_zero do |chef|
       chef.run_list = ['recipe[openldap::master]']
       chef.json = {
         openldap: {
@@ -20,7 +20,7 @@ Vagrant.configure('2') do |config|
 
   config.vm.define :jumpbox, primary: true do |guest|
     guest.vm.network :private_network, ip: '172.16.44.3'
-    guest.vm.provision :chef_solo do |chef|
+    guest.vm.provision :chef_zero do |chef|
       chef.run_list = %w(recipe[jumper])
       chef.json = {
         openldap: {
