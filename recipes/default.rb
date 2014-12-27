@@ -7,12 +7,19 @@
 #
 node.tag('jumper.gateway')
 
+include_recipe 'chef-provisioning::default'
 include_recipe 'chef-vault::default'
+
+include_recipe 'python::default'
+include_recipe 'python::pip'
+include_recipe 'python::virtualenv'
+python_pip 'python-ldap'
 
 # The gateway machines should update on a quicker interval.
 node.override['chef_client']['config']['interval'] = 300
 node.override['chef_client']['config']['splay'] = nil
 include_recipe 'chef-client::config'
+include_recipe 'chef-client::default'
 
 # TODO: (jbellone) An enhancement would be to permit forward agent so
 # that several private keys could be dropped on the gateway. But for
@@ -45,9 +52,8 @@ item['users'].each do |u|
     not_if { Dir.exist?(File.join(node['jumper']['home_path'], u['name'], '.ssh')) }
   end
 
-  key = OpenSSL::PKey::RSA.new(u['private_key'])
   private_key File.join(user_ssh.path, 'id_rsa') do
-    source_key key
+    source_key OpenSSL::PKey::RSA.new(u['private_key'])
     public_key_path File.join(user_ssh.path, 'id_rsa.pub')
     not_if { File.exist?(File.join(user_ssh.path, 'id_rsa')) }
   end
