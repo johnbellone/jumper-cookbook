@@ -28,7 +28,6 @@ include_recipe 'chef-client::default'
 node.default['openssh']['client']['forward_agent'] = 'no'
 node.default['openssh']['server']['permit_root_login'] = 'no'
 include_recipe 'openssh::default'
-include_recipe 'openssh::server'
 
 # Authentication credentials for LDAP are stored in a secure item.
 # These are necessary for querying the directory service for public
@@ -49,7 +48,7 @@ item['users'].each do |u|
     owner 'root'
     group 'root'
     mode '0600'
-    not_if { Dir.exist?(File.join(node['jumper']['home_path'], u['name'], '.ssh')) }
+    not_if { Dir.exist?(path) }
   end
 
   private_key File.join(user_ssh.path, 'id_rsa') do

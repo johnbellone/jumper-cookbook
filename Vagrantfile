@@ -9,14 +9,9 @@ Vagrant.configure('2') do |config|
     guest.vm.network :private_network, ip: '172.16.44.2'
     guest.vm.provision :chef_solo do |chef|
       chef.data_bags_path = File.join(File.expand_path('..', __FILE__), 'spec/fixtures/data_bags')
-      chef.run_list = ['recipe[openldap::server]']
+      chef.run_list = %w(ubuntu jumper-ldap)
       chef.json = {
-        dev_mode: true,
-        openldap: {
-          server: 'localhost',
-          rootpw: '{SSHA}6BjlvtSbVCL88li8IorkqMSofkLio58/',
-          tls_enabled: false
-        }
+        dev_mode: true
       }
     end
   end
@@ -25,7 +20,7 @@ Vagrant.configure('2') do |config|
     guest.vm.network :private_network, ip: '172.16.44.3'
     guest.vm.provision :chef_solo do |chef|
       chef.data_bags_path = File.join(File.expand_path('..', __FILE__), 'spec/fixtures/data_bags')
-      chef.run_list = %w(recipe[jumper])
+      chef.run_list = %w(jumper)
       chef.json = {
         dev_mode: true,
         openldap: {
