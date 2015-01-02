@@ -1,33 +1,20 @@
 jumper-cookbook
 ===============
+![Release](http://img.shields.io/github/release/johnbellone/jumper-cookbook.svg)
+[![Build Status](http://img.shields.io/travis/johnbellone/jumper-cookbook.svg)][5]
+[![Code Coverage](http://img.shields.io/coveralls/johnbellone/jumper-cookbook.svg)][6]
+
 Configure the host as a gateway (jump) machine for remote access.
 
-## Supported Platforms
-
-- [CentOS 6.5][3]
-- [CentOS 5.10][4]
-- [Ubuntu 12.04][5]
-- [Ubuntu 14.04][6]
-
-### jumper::default
-
-Include `jumper` in your node's `run_list`:
-
-```json
-{
-  "run_list": [
-    "recipe[jumper::default]"
-  ]
-}
-```
-
-## License and Authors
-
-Author:: [John Bellone][1] [@johnbellone][2] (<jbellone@bloomberg.net>)
+## Authors
+Created and maintained by [John Bellone][1] [@johnbellone][2]
+(<jbellone@bloomberg.net>) and a growing community of
+[contributors][4].
 
 [1]: https://github.com/johnbellone
 [2]: https://twitter.com/johnbellone
 [3]: http://centos.org
-[4]: http://centos.org
-[5]: http://ubuntu.com
-[6]: http://ubuntu.com
+[4]: http://ubuntu.com
+[5]: http://travis-ci.org/johnbellone/consul-cookbook
+[6]: https://coveralls.io/r/johnbellone/consul-cookbook
+[7]: https://github.com/johnbellone/jumper-cookbook/graphs/contributors
