@@ -28,6 +28,7 @@ include_recipe 'chef-client::default'
 node.default['openssh']['client']['forward_agent'] = 'no'
 node.default['openssh']['server']['permit_root_login'] = 'no'
 include_recipe 'openssh::default'
+include_recipe 'openssh::iptables'
 
 # Authentication credentials for LDAP are stored in a secure item.
 # These are necessary for querying the directory service for public
@@ -43,7 +44,7 @@ include_recipe 'openssh::lpk'
 # to use a search query instead of a single bag item.
 item = chef_vault_item(node['vault']['bag_name'], 'jumper')[node.chef_environment]
 item['users'].each do |u|
-  user_ssh = directory File.join(node['jumper']['home_path'], u['name'], '.ssh') do
+  r = directory File.join(node['jumper']['home_path'], u['name'], '.ssh') do
     recursive true
     owner 'root'
     group 'root'
@@ -51,9 +52,11 @@ item['users'].each do |u|
     not_if { Dir.exist?(path) }
   end
 
-  private_key File.join(user_ssh.path, 'id_rsa') do
-    source_key OpenSSL::PKey::RSA.new(u['private_key'])
-    public_key_path File.join(user_ssh.path, 'id_rsa.pub')
-    not_if { File.exist?(File.join(user_ssh.path, 'id_rsa')) }
+  Chef::Log.debug "Writing '#{u['name']}' private key to '#{r.path}'"
+  private_key File.join(r.path, 'id_rsa') do
+    source_key OpenSSL::PKey::RSA.new(u['private_key'].gsub(/\\n?/, "\n"))
+    public_key_path File.join(r.path, 'id_rsa.pub')
+    not_if { File.exist?(File.join(r.path, 'id_rsa')) }
+    only_if { u['private_key'] }
   end
 end

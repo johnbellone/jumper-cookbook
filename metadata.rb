@@ -14,6 +14,7 @@ end
 supports 'ubuntu', '= 14.04'
 supports 'ubuntu', '= 12.04'
 
+depends 'chef-client'
 depends 'chef-sugar'
 depends 'chef-provisioning'
 depends 'chef-vault'
