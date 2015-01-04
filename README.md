@@ -9,7 +9,7 @@ Configure the host as a gateway (jump) machine for remote access.
 ## Authors
 Created and maintained by [John Bellone][1] [@johnbellone][2]
 [![endorse](http://api.coderwall.com/johnbellone/endorsecount.png)](http://coderwall.com/johnbellone) and a growing community of
-[contributors][4].
+[contributors][7].
 
 [1]: https://github.com/johnbellone
 [2]: https://twitter.com/johnbellone
