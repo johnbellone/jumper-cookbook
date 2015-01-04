@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'berkshelf'
+gem 'chef-sugar'
 gem 'chef-provisioning'
 gem 'chef-vault'
 gem 'rake'

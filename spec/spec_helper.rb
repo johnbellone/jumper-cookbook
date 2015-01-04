@@ -32,7 +32,7 @@ at_exit { ChefSpec::Coverage.report! }
 
 RSpec.shared_context 'recipe tests', type: :recipe do
   let(:chef_run) do
-    ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '12.04') do |node, server|
+    ChefSpec::ServerRunner.new(platform: 'ubuntu', version: '14.04') do |node, server|
       node.set['dev_mode'] = true
       node.set['openldap']['tls_enabled'] = false
       server.create_data_bag('secrets', {
