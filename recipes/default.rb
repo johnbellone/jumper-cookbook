@@ -37,7 +37,7 @@ ldap = chef_vault_item(node['vault']['bag_name'], 'ldap')[node.chef_environment]
 node.default['openldap']['auth_binddn'] = ldap['auth_binddn']
 node.default['openldap']['auth_bindpw'] = ldap['auth_bindpw']
 include_recipe 'openldap::auth'
-include_recipe 'openssh::lpk'
+include_recipe 'openssh-lpk::default'
 
 # Distribute the private keys using secure data bags. Only the nodes
 # and administrators are able to decrypt these. It may make sense here

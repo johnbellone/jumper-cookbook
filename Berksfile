@@ -1,5 +1,5 @@
 source 'https://supermarket.chef.io'
-cookbook 'openssh', git: 'https://github.com/johnbellone/openssh'
+cookbook 'openssh', git: 'https://github.com/johnbellone/openssh-cookbook'
 metadata
 
 group :test, :integration do
