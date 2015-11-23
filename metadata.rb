@@ -12,5 +12,7 @@ supports 'ubuntu', '>= 12.04'
 supports 'redhat', '>= 6.4'
 supports 'centos', '>= 6.4'
 
+depends 'chef-client'
 depends 'os-hardening'
 depends 'ssh-hardening'
+depends 'sudo'
