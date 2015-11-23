@@ -1,21 +1,40 @@
 source 'https://rubygems.org'
 
-gem 'berkshelf'
-gem 'chef-sugar'
-gem 'chef-provisioning'
-gem 'chef-vault'
-gem 'rake'
-gem 'stove'
-
 group :lint do
-  gem 'coveralls', require: false
-  gem 'foodcritic'
   gem 'rubocop'
+  gem 'foodcritic'
 end
 
-group :test, :development do
+group :kitchen_common do
+  gem 'test-kitchen', '~> 1.4'
+end
+
+group :kitchen_vagrant do
+  gem 'kitchen-vagrant', '~> 0.17'
+end
+
+group :kitchen_cloud do
+  gem 'kitchen-openstack', '~> 1.8'
+end
+
+group :unit do
+  gem 'berkshelf'
   gem 'chefspec'
-  gem 'kitchen-vagrant'
+end
+
+group :integration do
   gem 'serverspec'
-  gem 'test-kitchen'
+end
+
+group :development do
+  gem 'awesome_print'
+  gem 'guard-kitchen'
+  gem 'guard-rspec'
+  gem 'guard-rubocop'
+  gem 'rake'
+  gem 'stove'
+end
+
+group :doc do
+  gem 'yard'
 end
