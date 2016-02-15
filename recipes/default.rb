@@ -2,7 +2,7 @@
 # Cookbook: jumper
 # License: Apache 2.0
 #
-# Copyright 2014-2015, Bloomberg Finance L.P.
+# Copyright 2014-2016, Bloomberg Finance L.P.
 #
 
 node.default['chef_client']['splay'] = 300
@@ -27,5 +27,5 @@ include_recipe 'os-hardening::default'
 
 node.default['authorization']['sudo']['passwordless'] = true
 node.default['authorization']['sudo']['include_sudoers_d'] = true
-node.default['authorization']['sudo']['groups'] = %w{sys}
+node.default['authorization']['sudo']['groups'] = %w{sudo}
 include_recipe 'sudo::default'

@@ -9,8 +9,8 @@ issues_url 'https://github.com/johnbellone/jumper-cookbook/issues'
 source_url 'https://github.com/johnbellone/jumper-cookbook'
 
 supports 'ubuntu', '>= 12.04'
-supports 'redhat', '>= 6.4'
-supports 'centos', '>= 6.4'
+supports 'redhat', '>= 5.11'
+supports 'centos', '>= 5.11'
 
 depends 'chef-client'
 depends 'os-hardening'
