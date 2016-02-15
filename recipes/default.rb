@@ -36,4 +36,4 @@ node.default['authorization']['sudo']['passwordless'] = true
 node.default['authorization']['sudo']['include_sudoers_d'] = true
 node.default['authorization']['sudo']['groups'] = %w{sudo}
 include_recipe 'sudo::default'
-include_recipe 'tmux::default'
+include_recipe 'tmux::default', 'mosh::default'
