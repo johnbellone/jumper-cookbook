@@ -4,10 +4,13 @@
 #
 # Copyright 2014-2016, Bloomberg Finance L.P.
 #
-if platform?('windows')
-  include_recipe 'winrm::default'
-  return
-end
+include_recipe 'chef-sugar::default'
+return if windows?
+
+node.default['firewall']['allow_ssh'] = true
+node.default['firewall']['allow_winrm'] = false
+include_recipe 'firewall::default'
+include_recipe 'selinux::default'
 
 node.default['chef_client']['splay'] = 300
 node.default['chef_client']['init_style'] = 'none'
