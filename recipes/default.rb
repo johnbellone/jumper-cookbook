@@ -4,6 +4,10 @@
 #
 # Copyright 2014-2016, Bloomberg Finance L.P.
 #
+if platform?('windows')
+  include_recipe 'winrm::default'
+  return
+end
 
 node.default['chef_client']['splay'] = 300
 node.default['chef_client']['init_style'] = 'none'
@@ -29,3 +33,4 @@ node.default['authorization']['sudo']['passwordless'] = true
 node.default['authorization']['sudo']['include_sudoers_d'] = true
 node.default['authorization']['sudo']['groups'] = %w{sudo}
 include_recipe 'sudo::default'
+include_recipe 'tmux::default'
