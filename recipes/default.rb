@@ -36,4 +36,13 @@ node.default['authorization']['sudo']['passwordless'] = true
 node.default['authorization']['sudo']['include_sudoers_d'] = true
 node.default['authorization']['sudo']['groups'] = %w{sudo}
 include_recipe 'sudo::default'
-include_recipe 'tmux::default', 'mosh::default'
+include_recipe 'tmux::default'
+
+if node['firewall']['allow_mosh']
+  include_recipe 'mosh::default'
+  firewall_rule 'mobile shell' do
+    protocol :udp
+    port 60_000..61_000
+    command :allow
+  end
+end
