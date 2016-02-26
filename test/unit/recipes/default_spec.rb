@@ -17,7 +17,6 @@ describe 'jumper::default' do
     it { expect(chef_run).to include_recipe 'firewall::default' }
     it { expect(chef_run).to include_recipe 'chef-client::cron' }
     it { expect(chef_run).to include_recipe 'chef-client::config' }
-    it { expect(chef_run).not_to include_recipe 'mosh::default' }
   end
 
   context "with node['firewall']['allow_mosh'] = true" do
@@ -35,6 +34,5 @@ describe 'jumper::default' do
     it { expect(chef_run).to include_recipe 'firewall::default' }
     it { expect(chef_run).to include_recipe 'chef-client::cron' }
     it { expect(chef_run).to include_recipe 'chef-client::config' }
-    it { expect(chef_run).to include_recipe 'mosh::default' }
   end
 end
